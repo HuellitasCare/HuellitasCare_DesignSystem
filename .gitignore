@@ -1,41 +1,71 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# dependencies
+# Dependencias
 node_modules/
 
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
 expo-env.d.ts
 
-# Native
+# Carpetas nativas generadas (Continuous Native Generation: se crean con `npx expo prebuild`)
+/ios
+/android
 .kotlin/
-*.orig.*
+
+# Builds y artefactos de distribución
+build/
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM.zip
+
+# Firmas, llaves y certificados (nunca subirlos)
 *.jks
+*.keystore
+!debug.keystore
 *.p8
 *.p12
 *.key
+*.pem
 *.mobileprovision
+*.orig.*
+google-services.json
+GoogleService-Info.plist
+
+# Variables de entorno (deja .env.example como plantilla)
+.env
+.env.*
+!.env.example
 
 # Metro
 .metro-health-check*
 
-# debug
+# Logs y debug
+*.log
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+pnpm-debug.log*
 
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-
-# typescript
+# TypeScript / herramientas
 *.tsbuildinfo
+.eslintcache
+coverage/
 
-# generated native folders
-/ios
-/android
+# Editores e IDEs
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración local de Claude Code (la compartida sí se versiona)
+.claude/settings.local.json
