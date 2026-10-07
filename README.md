@@ -123,6 +123,14 @@ Además hay tonos tenues (`primarySoft`, `secondarySoft`, `errorSoft`…) para l
 
 `urgencyStyles` da el color, el fondo y el color del indicador para cada nivel (`alta`, `moderada`, `baja`). Lo usan los banners, la escala, la tarjeta de resultado y la grilla de gravedad.
 
+## Versión web
+
+Los mismos componentes se publican como página estática en GitHub Pages: https://huellitascare.github.io/HuellitasCare_DesignSystem/
+
+- `App.web.tsx` es la entrada solo para web (react-native-web): muestra los componentes en una columna, sin títulos. En iOS/Android sigue siendo el catálogo de `App.tsx`.
+- `npm run build:web` genera la carpeta `dist/`. La ruta base está en `experiments.baseUrl` de `app.json`.
+- `.github/workflows/pages.yml` lo publica en cada push a `main`. Hay que activar **Settings → Pages → Source: GitHub Actions** una sola vez.
+
 ## Componentes
 
 | Carpeta        | Componentes |

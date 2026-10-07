@@ -15,7 +15,7 @@ import { UiSection } from './sections/UiSection';
 import { UrgencySection } from './sections/UrgencySection';
 import { VetSection } from './sections/VetSection';
 
-const SECTIONS: { key: string; label: string; Component: ComponentType }[] = [
+export const SECTIONS: { key: string; label: string; Component: ComponentType }[] = [
   { key: 'fundamentos', label: 'Fundamentos', Component: FoundationsSection },
   { key: 'ui', label: 'Base', Component: UiSection },
   { key: 'feedback', label: 'Feedback', Component: FeedbackSection },
