@@ -5,15 +5,11 @@ import { colors, fontFamily, radius, spacing } from '../../theme';
 import { AppText, Icon } from '../ui';
 
 export type WizardStepperProps = {
-  /** Ej. ["Síntomas", "Resultado", "Acción", "Monitor", "Guardar"]. */
   steps: string[];
-  /** Índice (base 0) del paso actual. */
   currentIndex: number;
-  /** En el Figma solo se muestran los pasos ya alcanzados; actívalo para ver también los siguientes en gris. */
   showUpcoming?: boolean;
 };
 
-/** Indicador de pasos del evaluador de urgencia: "✓ Síntomas — ✓ Resultado — 3 Acción". */
 export function WizardStepper({ steps, currentIndex, showUpcoming = false }: WizardStepperProps) {
   const visible = showUpcoming ? steps : steps.slice(0, currentIndex + 1);
 

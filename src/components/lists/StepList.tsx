@@ -20,7 +20,6 @@ const statusLabel: Record<StepStatus, string> = {
   pending: 'pendiente',
 };
 
-/** Lista de pasos con estado: completado (tachado), activo y pendiente. */
 export function StepList({ steps }: StepListProps) {
   return (
     <Card padding={0}>

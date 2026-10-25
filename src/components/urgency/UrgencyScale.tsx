@@ -10,13 +10,11 @@ const DEFAULT_DESCRIPTIONS: Record<UrgencyLevel, string> = {
 };
 
 export type UrgencyScaleProps = {
-  /** Nivel resultante; se resalta con la etiqueta "Actual". */
   current: UrgencyLevel;
   descriptions?: Partial<Record<UrgencyLevel, string>>;
   currentLabel?: string;
 };
 
-/** Escala Alta / Moderada / Baja con el nivel actual resaltado. */
 export function UrgencyScale({ current, descriptions, currentLabel = 'Actual' }: UrgencyScaleProps) {
   return (
     <Card padding={0}>

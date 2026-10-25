@@ -35,7 +35,7 @@ export function UiSection() {
 
   return (
     <CatalogSection title="Componentes base (ui)">
-      <Demo name="Button">
+      <Demo name="Botones">
         <View style={styles.wrap}>
           <Button title="Botón Primario" />
           <Button title="Botón Secundario" variant="secondary" />
@@ -58,7 +58,7 @@ export function UiSection() {
         <Button title="¿Olvidaste tu contraseña?" variant="link" style={styles.alignEnd} />
       </Demo>
 
-      <Demo name="IconButton">
+      <Demo name="Iconos">
         <View style={styles.row}>
           <IconButton icon="call" shape="rounded" size={36} accessibilityLabel="Llamar" />
           <IconButton icon="chatbubble-outline" variant="outline" shape="rounded" size={36} accessibilityLabel="Chat" />
@@ -69,7 +69,7 @@ export function UiSection() {
         </View>
       </Demo>
 
-      <Demo name="Badge">
+      <Demo name="Etiquetas">
         <View style={styles.wrap}>
           <Badge label="Badge" />
           <Badge label="Nuevo" tone="success" />
@@ -85,9 +85,9 @@ export function UiSection() {
         </View>
       </Demo>
 
-      <Demo name="Chip · ChipGroup">
+      <Demo name="Chips">
         <AppText variant="caption" color={colors.textSecondary}>
-          Selección única (outlined, sobre fondo gris)
+          Selección única
         </AppText>
         <ChipGroup
           variant="outlined"
@@ -102,7 +102,7 @@ export function UiSection() {
         />
         <Card>
           <AppText variant="caption" color={colors.textSecondary} style={styles.mb}>
-            Selección múltiple (filled, dentro de card)
+            Selección múltiple
           </AppText>
           <ChipGroup
             multiple
@@ -119,7 +119,7 @@ export function UiSection() {
         </Card>
       </Demo>
 
-      <Demo name="TextField">
+      <Demo name="Campos">
         <Card style={styles.gap}>
           <TextField label="Nombre de la mascota" placeholder="Texto de ejemplo..." value={name} onChangeText={setName} />
           <TextField label="Con error" placeholder="Texto inválido" value="" error="Este campo es requerido" />
@@ -149,22 +149,22 @@ export function UiSection() {
         />
       </Demo>
 
-      <Demo name="SelectField">
+      <Demo name="Selección">
         <Card style={styles.gap}>
           <SelectField label="Especie" value="Perro" onPress={() => {}} />
           <SelectField label="Raza" placeholder="Selecciona la raza" onPress={() => {}} />
         </Card>
       </Demo>
 
-      <Demo name="Checkbox">
+      <Demo name="Casilla">
         <Checkbox
           checked={acceptTerms}
           onChange={setAcceptTerms}
-          label="Acepto los Términos y condiciones y la Política de privacidad"
+          label="Acepto las condiciones"
         />
       </Demo>
 
-      <Demo name="RadioPillGroup">
+      <Demo name="Opciones">
         <RadioPillGroup
           accessibilityLabel="Severidad"
           value={severity}
@@ -177,7 +177,7 @@ export function UiSection() {
         />
       </Demo>
 
-      <Demo name="SegmentedControl">
+      <Demo name="Segmentos">
         <SegmentedControl
           value={tab}
           onChange={setTab}
@@ -192,17 +192,17 @@ export function UiSection() {
           value={pet}
           onChange={setPet}
           options={[
-            { label: 'Luna 🐕', value: 'luna' },
-            { label: 'Rocky 🐶', value: 'rocky' },
+            { label: 'Luna', value: 'luna' },
+            { label: 'Rocky', value: 'rocky' },
           ]}
         />
       </Demo>
 
-      <Demo name="ProgressBar">
+      <Demo name="Barra">
         <ProgressBar progress={0.6} label="3 / 5 preguntas" />
       </Demo>
 
-      <Demo name="Divider">
+      <Demo name="Separador">
         <Divider label="o continúa con" />
         <Divider />
       </Demo>
@@ -216,11 +216,11 @@ export function UiSection() {
         </View>
       </Demo>
 
-      <Demo name="Card · SectionLabel">
+      <Demo name="Tarjetas">
         <Card>
           <SectionLabel>Biografía</SectionLabel>
           <AppText>
-            Luna es una perra de compañía que destaca por su carácter tranquilo y sociable.
+            Luna · tranquila y sociable.
           </AppText>
         </Card>
       </Demo>

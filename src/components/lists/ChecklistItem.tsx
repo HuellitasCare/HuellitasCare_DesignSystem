@@ -9,11 +9,9 @@ export type ChecklistItemProps = {
   subtitle?: string;
   checked: boolean;
   onToggle?: (checked: boolean) => void;
-  /** Elemento a la derecha, ej. un badge "¿Cómo? →". */
   accessory?: ReactNode;
 };
 
-/** Ítem de la guía de seguimiento en casa ("Agua fresca y accesible"). Úsalo dentro de `ListGroup`. */
 export function ChecklistItem({ title, subtitle, checked, onToggle, accessory }: ChecklistItemProps) {
   return (
     <Pressable

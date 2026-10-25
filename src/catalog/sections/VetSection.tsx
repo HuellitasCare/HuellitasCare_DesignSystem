@@ -19,13 +19,13 @@ export function VetSection() {
 
   return (
     <CatalogSection title="Veterinario">
-      <Demo name="EmergencyCallCard">
+      <Demo name="Emergencia">
         <EmergencyCallCard title="Llamar veterinario ahora" subtitle="Botón de emergencia — siempre visible" />
         <EmergencyCallCard variant="dark" title="Línea de emergencias veterinarias" subtitle="Disponible 24/7" />
         <EmergencyCallCard variant="darkDanger" title="Línea de emergencias veterinarias" subtitle="Disponible 24/7" />
       </Demo>
 
-      <Demo name="VetCard">
+      <Demo name="Directorio">
         <VetCard
           name="Dr. Rodríguez"
           clinic="Clínica Animalitos"
@@ -50,12 +50,12 @@ export function VetSection() {
         </ListGroup>
       </Demo>
 
-      <Demo name="ChatHeader · DateSeparator · ChatBubble · ChatInput">
+      <Demo name="Mensajes">
         <ChatHeader name="Dr. Rodríguez" subtitle="Clínica Animalitos" />
         <View style={styles.chat}>
           <DateSeparator label="Hoy, 18 mayo 2026" />
-          <ChatBubble direction="sent" message="Buenas tardes doctora, ¿cómo sigue Luna? ¿Ya ha bebido agua?" time="10:05" />
-          <ChatBubble direction="received" message="Ya ha estado mejorando, comió con facilidad y bebió agua" time="10:10" />
+          <ChatBubble direction="sent" message="¿Cómo sigue Luna?" time="10:05" />
+          <ChatBubble direction="received" message="Está mejorando." time="10:10" />
           {sent.map((text, index) => (
             <ChatBubble key={index} direction="sent" message={text} time="Ahora" />
           ))}

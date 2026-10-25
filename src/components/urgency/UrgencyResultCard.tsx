@@ -5,12 +5,10 @@ import { AppText } from '../ui';
 
 export type UrgencyResultCardProps = {
   level: UrgencyLevel;
-  /** Por defecto "URGENCIA ALTA", "URGENCIA MODERADA", etc. */
   title?: string;
   description: string;
 };
 
-/** Resultado del evaluador: círculo de color grande + nivel + recomendación. */
 export function UrgencyResultCard({ level, title, description }: UrgencyResultCardProps) {
   const { label, color, soft, dot } = urgencyStyles[level];
 

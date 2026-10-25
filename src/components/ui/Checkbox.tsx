@@ -8,10 +8,10 @@ import { Icon } from './Icon';
 export type CheckboxProps = {
   checked: boolean;
   onChange?: (checked: boolean) => void;
-  /** Texto o nodo (permite links dentro, ej. "Términos y condiciones"). */
   label?: ReactNode;
   disabled?: boolean;
   accessibilityLabel?: string;
+  accessibilityHint?: string;
 };
 
 export function CheckboxBox({ checked }: { checked: boolean }) {
@@ -22,7 +22,7 @@ export function CheckboxBox({ checked }: { checked: boolean }) {
   );
 }
 
-export function Checkbox({ checked, onChange, label, disabled = false, accessibilityLabel }: CheckboxProps) {
+export function Checkbox({ checked, onChange, label, disabled = false, accessibilityLabel, accessibilityHint }: CheckboxProps) {
   return (
     <Pressable
       onPress={() => onChange?.(!checked)}
@@ -30,6 +30,7 @@ export function Checkbox({ checked, onChange, label, disabled = false, accessibi
       accessibilityRole="checkbox"
       accessibilityState={{ checked, disabled }}
       accessibilityLabel={accessibilityLabel ?? (typeof label === 'string' ? label : undefined)}
+      accessibilityHint={accessibilityHint}
       hitSlop={8}
       style={[styles.row, disabled && styles.disabled]}
     >
@@ -48,12 +49,12 @@ export function Checkbox({ checked, onChange, label, disabled = false, accessibi
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
   box: {
-    width: 22,
-    height: 22,
-    borderRadius: 6,
+    width: 24,
+    height: 24,
+    borderRadius: 8,
     borderWidth: 1.5,
-    borderColor: '#C4C4C4',
-    backgroundColor: colors.surface,
+    borderColor: '#C2D7CA',
+    backgroundColor: colors.glass,
     alignItems: 'center',
     justifyContent: 'center',
   },

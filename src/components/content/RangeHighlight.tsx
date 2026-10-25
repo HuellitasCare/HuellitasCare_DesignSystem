@@ -4,13 +4,10 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText } from '../ui';
 
 export type RangeHighlightProps = {
-  /** Ej. "38°C – 39°C". */
   value: string;
-  /** Ej. "Temperatura normal · Perros adultos". */
   caption?: string;
 };
 
-/** Valor de referencia destacado en verde dentro de un artículo. */
 export function RangeHighlight({ value, caption }: RangeHighlightProps) {
   return (
     <View style={styles.container} accessible accessibilityLabel={caption ? `${value}. ${caption}` : value}>

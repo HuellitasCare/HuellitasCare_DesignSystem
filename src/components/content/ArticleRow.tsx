@@ -6,16 +6,13 @@ import { renderIconSlot, type IconSlot } from '../ui';
 
 export type ArticleRowProps = {
   title: string;
-  /** Ej. "Salud · 5 min". */
   meta?: string;
-  /** Miniatura del artículo. Sin imagen se muestra un cuadro gris (o el ícono si se pasa). */
   thumbnail?: ImageSourcePropType;
   icon?: IconSlot;
   iconBackground?: string;
   onPress?: () => void;
 };
 
-/** Fila de artículo ("Señales de deshidratación"). Úsala dentro de `ListGroup`. */
 export function ArticleRow({ title, meta, thumbnail, icon, iconBackground, onPress }: ArticleRowProps) {
   const leading = thumbnail !== undefined ? (
     <Image source={thumbnail} style={styles.thumb} />

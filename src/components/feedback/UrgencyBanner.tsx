@@ -5,7 +5,6 @@ import { AppText } from '../ui';
 
 export type UrgencyBannerProps = {
   level: UrgencyLevel;
-  /** Por defecto "URGENCIA ALTA", "URGENCIA MODERADA", etc. */
   title?: string;
   description: string;
 };

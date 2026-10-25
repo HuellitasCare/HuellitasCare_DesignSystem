@@ -21,41 +21,41 @@ export function ListsSection() {
 
   return (
     <CatalogSection title="Listas">
-      <Demo name="ListGroup · ListRow">
+      <Demo name="Filas">
         <ListGroup>
-          <ListRow icon="🔔" title="Título de la fila" subtitle="Subtítulo descriptivo" badge={{ label: 'Badge' }} onPress={() => {}} />
-          <ListRow icon="📋" title="Segunda fila" subtitle="Con badge verde" badge={{ label: 'Nuevo', tone: 'success' }} onPress={() => {}} />
-          <ListRow icon="⚡" title="Tercera fila" subtitle="Con badge rojo" badge={{ label: '3', tone: 'error' }} onPress={() => {}} />
+          <ListRow icon="time" title="Avisos" subtitle="Pendientes" badge={{ label: 'Hoy' }} onPress={() => {}} />
+          <ListRow icon="document-attach" title="Historial" subtitle="Nuevo registro" badge={{ label: 'Nuevo', tone: 'success' }} onPress={() => {}} />
+          <ListRow icon="pulse" title="Alertas" subtitle="3 activas" badge={{ label: '3', tone: 'error' }} onPress={() => {}} />
         </ListGroup>
         <ListGroup>
           <ListRow
-            icon="📞"
-            title="Contacto veterinario"
-            subtitle="Clínicas abiertas ahora · 0.8 km"
+            icon="call"
+            title="Veterinario"
+            subtitle="Abierto · 0.8 km"
             tone="danger"
             badge={{ label: 'Ir ahora', tone: 'error', variant: 'solid' }}
             onPress={() => {}}
           />
           <ListRow
-            icon="👁"
+            icon="eye"
             iconBackground={colors.primarySoft}
-            title="Guía en casa · Luna"
-            subtitle="Ver checklist de monitoreo"
+            title="Guía en casa"
+            subtitle="Seguimiento activo"
             badge={{ label: 'Activo', tone: 'success', variant: 'solid' }}
             onPress={() => {}}
           />
           <ListRow
-            icon="👁"
-            title="Observar en casa"
-            subtitle="Guía de monitoreo · 4-6 h"
+            icon="eye"
+            title="Observación"
+            subtitle="4–6 h"
             badge={<Badge label="Recomendado" tone="success" />}
             onPress={() => {}}
           />
-          <ListRow icon="💧" iconBackground="#E3F2FD" title="Si es leve" subtitle="Ofrece agua en pequeñas cantidades cada 15 min" />
+          <ListRow icon="water-outline" iconBackground={colors.primarySoft} title="Hidratación" subtitle="Agua cada 15 min" />
         </ListGroup>
       </Demo>
 
-      <Demo name="KeyValueList">
+      <Demo name="Datos">
         <KeyValueList
           items={[
             { label: 'Especie', value: 'Perro' },
@@ -67,7 +67,7 @@ export function ListsSection() {
         />
       </Demo>
 
-      <Demo name="StatRow">
+      <Demo name="Indicadores">
         <StatRow
           items={[
             { value: 2, label: 'Alertas', color: colors.error },
@@ -77,7 +77,7 @@ export function ListsSection() {
         />
       </Demo>
 
-      <Demo name="StepList">
+      <Demo name="Pasos">
         <StepList
           steps={[
             { label: 'Paso completado', status: 'completed' },
@@ -87,7 +87,7 @@ export function ListsSection() {
         />
       </Demo>
 
-      <Demo name="NumberedSteps">
+      <Demo name="Instrucciones">
         <NumberedSteps
           steps={[
             { title: 'Prepara el termómetro digital', description: 'Usa un termómetro rectal digital. Límpialo con alcohol.' },
@@ -97,7 +97,7 @@ export function ListsSection() {
         />
       </Demo>
 
-      <Demo name="ChecklistItem">
+      <Demo name="Checklist">
         <ListGroup>
           <ChecklistItem
             title="Ambiente tranquilo preparado"
@@ -127,7 +127,7 @@ export function ListsSection() {
         </ListGroup>
       </Demo>
 
-      <Demo name="TipList">
+      <Demo name="Consejos">
         <TipList
           variant="avoid"
           title="Evita hacer esto"

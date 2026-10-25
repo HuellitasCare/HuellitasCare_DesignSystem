@@ -6,7 +6,6 @@ import { AppText, Icon, ProgressBar, type IconName } from '../ui';
 export type AudioGuidePlayerProps = {
   title?: string;
   subtitle?: string;
-  /** Avance de la reproducción, entre 0 y 1. */
   progress: number;
   isPlaying: boolean;
   onPlayPause: () => void;
@@ -16,10 +15,6 @@ export type AudioGuidePlayerProps = {
   onNext?: () => void;
 };
 
-/**
- * Controles de la guía en audio de los artículos. Solo es la interfaz:
- * la reproducción la maneja la pantalla (ej. con expo-audio).
- */
 export function AudioGuidePlayer({
   title = 'Escuchar esta guía',
   subtitle = 'Pulsa los botones para controlar la reproducción',

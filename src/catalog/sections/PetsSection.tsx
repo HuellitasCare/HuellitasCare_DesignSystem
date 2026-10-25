@@ -16,16 +16,16 @@ export function PetsSection() {
 
   return (
     <CatalogSection title="Mascotas y dashboard">
-      <Demo name="GreetingHeader">
+      <Demo name="Saludo">
         <GreetingHeader greeting="Buenas noches," name="Ángel" />
       </Demo>
 
-      <Demo name="PetSelector · AddPetTile">
+      <Demo name="Selector">
         <PetSelector
           pets={[
-            { id: 'luna', name: 'Luna', emoji: '🐕' },
-            { id: 'milo', name: 'Milo', emoji: '🐈' },
-            { id: 'rocky', name: 'Rocky', emoji: '🐶' },
+            { id: 'luna', name: 'Luna' },
+            { id: 'milo', name: 'Milo' },
+            { id: 'rocky', name: 'Rocky' },
           ]}
         />
         <PetSelector
@@ -33,8 +33,8 @@ export function PetsSection() {
           onSelect={setSelectedPet}
           onAdd={() => {}}
           pets={[
-            { id: 'luna', name: 'Luna', emoji: '🐕', hasAlert: true },
-            { id: 'milo', name: 'Milo', emoji: '🐈' },
+            { id: 'luna', name: 'Luna', hasAlert: true },
+            { id: 'milo', name: 'Milo' },
           ]}
         />
         <View style={styles.tileDemo}>
@@ -42,7 +42,7 @@ export function PetsSection() {
         </View>
       </Demo>
 
-      <Demo name="PetProfileHeader">
+      <Demo name="Perfil">
         <PetProfileHeader
           name="Luna"
           subtitle="Golden Retriever · 3 años"
@@ -50,18 +50,18 @@ export function PetsSection() {
         />
       </Demo>
 
-      <Demo name="MonitoringStatusCard">
+      <Demo name="Seguimiento">
         <MonitoringStatusCard
-          title="👁 Seguimiento en casa activo"
-          subtitle="Luna 🐕 · Próxima revisión"
+          title="Seguimiento activo"
+          subtitle="Luna · Próxima revisión"
           time="10:30 PM"
           onPress={() => {}}
         />
       </Demo>
 
-      <Demo name="UrgencyActiveCard">
+      <Demo name="Alerta">
         <UrgencyActiveCard
-          title="Urgencia alta · Luna 🐕"
+          title="Urgencia alta · Luna"
           description="Busca atención veterinaria inmediata"
           onAction={() => {}}
         />

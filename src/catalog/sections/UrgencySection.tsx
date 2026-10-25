@@ -5,14 +5,15 @@ import {
   SymptomCategoryAccordion,
   UrgencyResultCard,
   UrgencyScale,
+  type IconName,
 } from '../../components';
 import { CatalogSection, Demo } from '../CatalogSection';
 
-const CATEGORIES = [
+const CATEGORIES: { key: string; title: string; icon: IconName; options: { label: string; value: string }[] }[] = [
   {
     key: 'digestivo',
     title: 'Digestivo',
-    icon: '🍽',
+    icon: 'nutrition-outline',
     options: [
       { label: 'Vómito', value: 'vomito' },
       { label: 'Diarrea', value: 'diarrea' },
@@ -23,7 +24,7 @@ const CATEGORIES = [
   {
     key: 'respiratorio',
     title: 'Respiratorio',
-    icon: '🫁',
+    icon: 'pulse',
     options: [
       { label: 'Tos persistente', value: 'tos' },
       { label: 'Dificultad para respirar', value: 'respirar' },
@@ -33,7 +34,7 @@ const CATEGORIES = [
   {
     key: 'otros',
     title: 'Otros',
-    icon: '⚠️',
+    icon: 'warning',
     options: [
       { label: 'Temperatura alta', value: 'temperatura' },
       { label: 'Convulsiones', value: 'convulsiones' },
@@ -49,7 +50,7 @@ export function UrgencySection() {
 
   return (
     <CatalogSection title="Evaluador de urgencia">
-      <Demo name="SymptomCategoryAccordion">
+      <Demo name="Categorías">
         {CATEGORIES.map((category) => (
           <SymptomCategoryAccordion
             key={category.key}
@@ -64,16 +65,16 @@ export function UrgencySection() {
         ))}
       </Demo>
 
-      <Demo name="UrgencyResultCard">
+      <Demo name="Resultado">
         <UrgencyResultCard level="moderada" description="Consulta veterinaria en las próximas 24 horas" />
         <UrgencyResultCard level="alta" description="Requiere atención veterinaria inmediata" />
       </Demo>
 
-      <Demo name="UrgencyScale">
+      <Demo name="Escala">
         <UrgencyScale current="moderada" />
       </Demo>
 
-      <Demo name="SeverityLevelGrid">
+      <Demo name="Niveles">
         <SeverityLevelGrid
           items={[
             { level: 'baja', title: 'Leve', description: 'Piel regresa en 1–2 seg, encías normales' },

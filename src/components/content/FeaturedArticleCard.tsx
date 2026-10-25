@@ -6,15 +6,12 @@ import { ImagePlaceholder } from './ImagePlaceholder';
 
 export type FeaturedArticleCardProps = {
   title: string;
-  /** Ej. "12 min lectura". */
   meta?: string;
-  /** Ej. "Esencial". */
   badgeLabel?: string;
   image?: ImageSourcePropType;
   onPress?: () => void;
 };
 
-/** Artículo destacado de "Cuidados básicos" con imagen superior. */
 export function FeaturedArticleCard({ title, meta, badgeLabel, image, onPress }: FeaturedArticleCardProps) {
   return (
     <Pressable

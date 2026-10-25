@@ -1,20 +1,17 @@
+import { useState } from 'react';
 import { Pressable, StyleSheet, type ViewStyle } from 'react-native';
 
-import { colors, radius } from '../../theme';
+import { colors, radius, shadows } from '../../theme';
 import { Icon, type IconName } from './Icon';
 
 export type IconButtonVariant =
-  /** Verde sólido: llamar, enviar, adjuntar. */
   | 'filled'
-  /** Blanco con borde: chat. */
   | 'outline'
-  /** Blanco translúcido sobre verde: botón "atrás" del header. */
   | 'translucent';
 
 export type IconButtonProps = {
   icon: IconName;
   onPress?: () => void;
-  /** Obligatorio: el botón no tiene texto visible. */
   accessibilityLabel: string;
   variant?: IconButtonVariant;
   shape?: 'circle' | 'rounded';
@@ -24,12 +21,12 @@ export type IconButtonProps = {
 };
 
 const variantStyles: Record<IconButtonVariant, { container: ViewStyle; icon: string }> = {
-  filled: { container: { backgroundColor: colors.primary }, icon: colors.white },
+  filled: { container: { backgroundColor: colors.primary, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.18)', ...shadows.button }, icon: colors.white },
   outline: {
-    container: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border },
-    icon: colors.textSecondary,
+    container: { backgroundColor: colors.glass, borderWidth: 1, borderColor: colors.glassBorder, ...shadows.soft },
+    icon: colors.primary,
   },
-  translucent: { container: { backgroundColor: colors.whiteTranslucent }, icon: colors.white },
+  translucent: { container: { backgroundColor: colors.whiteTranslucent, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.28)' }, icon: colors.white },
 };
 
 export function IconButton({
@@ -38,18 +35,20 @@ export function IconButton({
   accessibilityLabel,
   variant = 'filled',
   shape = 'circle',
-  size = 40,
+  size = 44,
   disabled = false,
   style,
 }: IconButtonProps) {
   const { container, icon: iconColor } = variantStyles[variant];
-  // Mantiene el área táctil en 44px aunque el botón visual sea más chico.
+  const [hovered, setHovered] = useState(false);
   const slop = Math.max(0, (44 - size) / 2);
 
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       accessibilityState={{ disabled }}
@@ -62,6 +61,7 @@ export function IconButton({
           borderRadius: shape === 'circle' ? size / 2 : radius.sm,
         },
         container,
+        hovered && !disabled && styles.hovered,
         pressed && styles.pressed,
         disabled && styles.disabled,
         style,
@@ -74,6 +74,7 @@ export function IconButton({
 
 const styles = StyleSheet.create({
   base: { alignItems: 'center', justifyContent: 'center' },
-  pressed: { opacity: 0.8 },
+  hovered: { opacity: 0.9 },
+  pressed: { opacity: 0.85, transform: [{ scale: 0.95 }] },
   disabled: { opacity: 0.5 },
 });

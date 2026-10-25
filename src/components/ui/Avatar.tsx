@@ -1,15 +1,15 @@
-import { Image, StyleSheet, View, type ImageSourcePropType } from 'react-native';
+import { Image, type ImageSource } from 'expo-image';
+import { StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { colors, fontFamily } from '../../theme';
 import { AppText } from './AppText';
+import { Icon } from './Icon';
 
 export type AvatarProps = {
   source?: ImageSourcePropType;
-  /** Se usan las iniciales cuando no hay imagen. */
   name?: string;
   size?: number;
   shape?: 'circle' | 'rounded';
-  /** Punto de alerta en la esquina superior derecha. */
   dotColor?: string;
 };
 
@@ -29,14 +29,15 @@ export function Avatar({ source, name, size = 48, shape = 'circle', dotColor }: 
   return (
     <View style={{ width: size, height: size }} accessibilityRole="image" accessibilityLabel={name}>
       {source !== undefined ? (
-        <Image source={source} style={{ width: size, height: size, borderRadius }} />
+        <Image source={source as ImageSource} style={{ width: size, height: size, borderRadius }} contentFit="cover"
+          transition={150} accessible={false} />
       ) : (
         <View style={[styles.placeholder, { width: size, height: size, borderRadius }]}>
-          {name && (
+          {name ? (
             <AppText color={colors.textSecondary} style={{ fontSize: size * 0.36, fontFamily: fontFamily.semibold }}>
               {initials(name)}
             </AppText>
-          )}
+          ) : <Icon name="paw-outline" size={size * 0.45} color={colors.textSecondary} />}
         </View>
       )}
       {dotColor && (

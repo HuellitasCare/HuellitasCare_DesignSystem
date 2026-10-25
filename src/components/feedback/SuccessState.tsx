@@ -9,7 +9,6 @@ export type SuccessStateProps = {
   icon?: IconName;
 };
 
-/** Confirmación centrada: "Síntoma registrado", "Recordatorio configurado", "Acción completada". */
 export function SuccessState({ title, subtitle, icon = 'checkmark' }: SuccessStateProps) {
   return (
     <View style={styles.container} accessibilityRole="summary">

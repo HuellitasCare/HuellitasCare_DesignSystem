@@ -1,20 +1,18 @@
 import { Pressable, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { colors, radius, spacing } from '../../theme';
-import { AppText, Avatar, Badge, IconButton } from '../ui';
+import { AppText, Avatar, Badge, Icon, IconButton } from '../ui';
 
 export type VetCardProps = {
   name: string;
   clinic: string;
   rating?: number;
-  /** Ej. "0.8 km". */
   distance?: string;
   isOpen: boolean;
   photo?: ImageSourcePropType;
   onPress?: () => void;
   onCall?: () => void;
   onChat?: () => void;
-  /** `card`: tarjeta independiente. `row`: fila para usar dentro de `ListGroup`. */
   variant?: 'card' | 'row';
 };
 
@@ -30,9 +28,7 @@ export function VetCard({
   onChat,
   variant = 'card',
 }: VetCardProps) {
-  const meta = [rating !== undefined && `⭐ ${rating.toFixed(1)}`, distance && `📍 ${distance}`]
-    .filter(Boolean)
-    .join(' · ');
+
 
   return (
     <Pressable
@@ -57,11 +53,12 @@ export function VetCard({
         <AppText variant="caption" color={colors.muted} numberOfLines={1}>
           {clinic}
         </AppText>
-        {meta.length > 0 && (
-          <AppText variant="caption" color={colors.textSecondary}>
-            {meta}
-          </AppText>
-        )}
+        {(rating !== undefined || distance) && <View style={styles.meta}>
+          {rating !== undefined && <><Icon name="star" size={12} color={colors.secondary} />
+            <AppText variant="caption" color={colors.textSecondary}>{rating.toFixed(1)}</AppText></>}
+          {distance && <><Icon name="location-outline" size={12} color={colors.textSecondary} />
+            <AppText variant="caption" color={colors.textSecondary}>{distance}</AppText></>}
+        </View>}
       </View>
       <View style={styles.actions}>
         {onCall && (
@@ -98,6 +95,7 @@ const styles = StyleSheet.create({
   },
   pressed: { opacity: 0.85 },
   info: { flex: 1, gap: 2 },
+  meta: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: spacing.xs },
   nameRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs + 2 },
   name: { flexShrink: 1 },
   actions: { gap: spacing.sm },

@@ -4,18 +4,13 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText } from '../ui';
 
 export type MonitoringStatusCardProps = {
-  /** Ej. "👁 Seguimiento en casa activo". */
   title: string;
-  /** Ej. "Luna 🐕 · Próxima revisión". */
   subtitle?: string;
-  /** Etiqueta del recuadro de la derecha, ej. "Revisión". */
   timeLabel?: string;
-  /** Ej. "10:30 PM". */
   time?: string;
   onPress?: () => void;
 };
 
-/** Tarjeta verde de seguimiento activo (dashboard y guía en casa). */
 export function MonitoringStatusCard({
   title,
   subtitle,

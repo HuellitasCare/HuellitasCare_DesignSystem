@@ -6,11 +6,9 @@ import { Card } from '../ui';
 
 export type ListGroupProps = {
   children: ReactNode;
-  /** Sangría izquierda del separador (para alinearlo con el texto en vez del ícono). */
   separatorInset?: number;
 };
 
-/** Card blanca que apila filas (`ListRow`, `VetCard variant="row"`, etc.) con separadores. */
 export function ListGroup({ children, separatorInset = spacing.lg }: ListGroupProps) {
   const rows = Children.toArray(children).filter(isValidElement);
 

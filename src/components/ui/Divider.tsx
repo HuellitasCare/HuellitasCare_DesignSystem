@@ -4,7 +4,6 @@ import { colors, spacing } from '../../theme';
 import { AppText } from './AppText';
 
 export type DividerProps = {
-  /** Texto centrado, ej. "o continúa con". Sin texto se dibuja una línea simple. */
   label?: string;
 };
 

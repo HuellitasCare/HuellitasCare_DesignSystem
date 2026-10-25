@@ -4,7 +4,6 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText, Badge, Button } from '../ui';
 
 export type UrgencyActiveCardProps = {
-  /** Ej. "Urgencia alta · Luna 🐕". */
   title: string;
   description?: string;
   badgeLabel?: string;
@@ -12,7 +11,6 @@ export type UrgencyActiveCardProps = {
   onAction?: () => void;
 };
 
-/** Tarjeta oscura del dashboard cuando hay una urgencia alta activa. */
 export function UrgencyActiveCard({
   title,
   description,

@@ -13,13 +13,13 @@ export function NavigationSection() {
 
   return (
     <CatalogSection title="Navegación">
-      <Demo name="AppHeader">
+      <Demo name="Cabecera">
         <View style={styles.clip}>
           <AppHeader title="Nombre de Pantalla" onBack={() => {}} safeAreaTop={false} />
         </View>
       </Demo>
 
-      <Demo name="WizardStepper">
+      <Demo name="Progreso">
         <WizardStepper steps={WIZARD_STEPS} currentIndex={0} />
         <WizardStepper steps={WIZARD_STEPS} currentIndex={step} />
         <WizardStepper steps={WIZARD_STEPS} currentIndex={1} showUpcoming />
@@ -31,7 +31,7 @@ export function NavigationSection() {
         />
       </Demo>
 
-      <Demo name="BottomTabBar">
+      <Demo name="Pestañas">
         <View style={styles.clip}>
           <BottomTabBar
             safeAreaBottom={false}

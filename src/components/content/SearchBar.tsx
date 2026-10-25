@@ -7,7 +7,6 @@ export type SearchBarProps = {
   value: string;
   onChangeText: (text: string) => void;
   placeholder?: string;
-  /** Si se pasa, muestra el botón de filtros a la derecha. */
   onFilterPress?: () => void;
   onSubmit?: () => void;
 };

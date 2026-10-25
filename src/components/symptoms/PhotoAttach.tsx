@@ -1,17 +1,12 @@
-import { Image, Pressable, StyleSheet, View, type ImageSourcePropType } from 'react-native';
+import { Image, type ImageSource } from 'expo-image';
+import { Pressable, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { colors, radius, spacing } from '../../theme';
 import { AppText, Icon } from '../ui';
 
 export type PhotoAttachProps = {
-  /** Abre la cámara o galería; lo maneja la pantalla (ej. con expo-image-picker). */
   onPress?: () => void;
-  /** Foto ya seleccionada, se muestra como miniatura. */
   image?: ImageSourcePropType;
-  /**
-   * - `row`: cuadro punteado + textos ("Toca para adjuntar").
-   * - `avatar`: círculo punteado centrado ("Agregar foto" de la mascota).
-   */
   variant?: 'row' | 'avatar';
   title?: string;
   subtitle?: string;
@@ -42,7 +37,8 @@ export function PhotoAttach({
         ]}
       >
         {image !== undefined ? (
-          <Image source={image} style={{ width: size, height: size, borderRadius: isAvatar ? size / 2 : radius.md }} />
+          <Image source={image as ImageSource} contentFit="cover" transition={150}
+            style={{ width: size, height: size, borderRadius: isAvatar ? size / 2 : radius.md }} />
         ) : (
           <Icon name="add" size={22} color={colors.muted} />
         )}

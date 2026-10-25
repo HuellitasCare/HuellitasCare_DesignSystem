@@ -4,34 +4,32 @@ import { CatalogSection, Demo } from '../CatalogSection';
 export function FeedbackSection() {
   return (
     <CatalogSection title="Feedback">
-      <Demo name="Alert">
-        <Alert tone="success" title="Cambios guardados correctamente" />
-        <Alert tone="warning" title="Revisa los datos ingresados" />
-        <Alert tone="error" title="Algo salió mal. Intenta de nuevo" />
+      <Demo name="Alertas">
+        <Alert tone="success" title="Guardado" />
+        <Alert tone="warning" title="Revisar datos" />
+        <Alert tone="error" title="Error" />
         <Alert
           tone="error"
           icon="alert-circle"
-          title="Acción inmediata requerida"
-          message="Los síntomas de Luna combinan fiebre con dificultad respiratoria. Esto puede ser señal de una emergencia grave. No esperes."
+          title="Atención urgente"
+          message="Consulta veterinaria inmediata"
         />
       </Demo>
 
-      <Demo name="UrgencyBanner">
-        <UrgencyBanner level="alta" description="Requiere atención veterinaria inmediata" />
-        <UrgencyBanner level="moderada" description="Consulta en las próximas 24 horas" />
-        <UrgencyBanner level="baja" description="Monitorea en casa, no es urgente" />
+      <Demo name="Urgencia">
+        <UrgencyBanner level="alta" description="Atención inmediata" />
+        <UrgencyBanner level="moderada" description="Consulta en 24 h" />
+        <UrgencyBanner level="baja" description="Monitoreo en casa" />
       </Demo>
 
-      <Demo name="InfoNote">
-        <InfoNote icon="📱">Al guardar, tu guía de monitoreo quedará activa en el dashboard.</InfoNote>
-        <InfoNote icon="✅" tone="success">
-          “Vómito” · “No come” guardados en el historial de Luna
-        </InfoNote>
+      <Demo name="Notas">
+        <InfoNote icon="phone-portrait-outline">Guía activa</InfoNote>
+        <InfoNote icon="checkmark-circle" tone="success">Guardado en historial</InfoNote>
       </Demo>
 
-      <Demo name="SuccessState">
+      <Demo name="Confirmación">
         <Card>
-          <SuccessState title="Acción completada" subtitle="Los cambios fueron guardados correctamente" />
+          <SuccessState title="Completado" subtitle="Cambios guardados" />
         </Card>
       </Demo>
     </CatalogSection>

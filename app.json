@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HuellitasCareApp",
-    "slug": "HuellitasCareApp",
+    "name": "HuellitasCare Design System Glass",
+    "slug": "huellitascare-design-system-glass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,7 +11,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#F0F6F3",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -25,7 +25,8 @@
     },
     "plugins": [
       "@react-native-vector-icons/ionicons",
-      "expo-font"
+      "expo-font",
+      "expo-image"
     ],
     "experiments": {
       "baseUrl": "/HuellitasCare_DesignSystem"

@@ -1,15 +1,13 @@
-import { Pressable, StyleSheet, View, type ImageSourcePropType } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View, type ImageSourcePropType } from 'react-native';
 
 import { colors, radius, spacing } from '../../theme';
-import { AppText, Avatar, Card, Icon } from '../ui';
+import { AppText, Avatar, Icon } from '../ui';
+import { GlassSurface } from '../ui/GlassSurface';
 
 export type PetSummary = {
   id: string;
   name: string;
-  /** Emoji junto al nombre, ej. "🐕". */
-  emoji?: string;
   photo?: ImageSourcePropType;
-  /** Resalta la mascota con una alerta activa (punto rojo). */
   hasAlert?: boolean;
 };
 
@@ -18,7 +16,6 @@ export type AddPetTileProps = {
   label?: string;
 };
 
-/** Tile punteado "+ Agregar" (dashboard vacío y lista de mascotas). */
 export function AddPetTile({ onPress, label = 'Agregar' }: AddPetTileProps) {
   return (
     <Pressable
@@ -27,8 +24,10 @@ export function AddPetTile({ onPress, label = 'Agregar' }: AddPetTileProps) {
       accessibilityLabel={`${label} mascota`}
       style={({ pressed }) => [styles.tile, styles.addTile, pressed && styles.pressed]}
     >
-      <Icon name="add" size={20} color={colors.muted} />
-      <AppText variant="caption" color={colors.muted}>
+      <View style={styles.addIcon}>
+        <Icon name="add" size={25} color={colors.primary} />
+      </View>
+      <AppText variant="caption" weight="medium" color={colors.primary}>
         {label}
       </AppText>
     </Pressable>
@@ -43,11 +42,14 @@ export type PetSelectorProps = {
   onAdd?: () => void;
 };
 
-/** Sección "MIS MASCOTAS": tiles con avatar y nombre. */
+/**
+ * Sección "MIS MASCOTAS": tiles con foto y nombre en una sola fila que se desliza de lado; el tile
+ * "+ Agregar" queda al final, después de la última mascota.
+ */
 export function PetSelector({ pets, selectedId, onSelect, onAdd }: PetSelectorProps) {
   return (
-    <Card padding={spacing.md}>
-      <View style={styles.row}>
+    <GlassSurface style={styles.card}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.row}>
         {pets.map((pet) => {
           const selected = pet.id === selectedId;
           return (
@@ -65,39 +67,48 @@ export function PetSelector({ pets, selectedId, onSelect, onAdd }: PetSelectorPr
                 pressed && styles.pressed,
               ]}
             >
-              <Avatar source={pet.photo} size={40} />
+              <View style={[styles.avatarRing, selected && styles.avatarSelected]}>
+                <Avatar source={pet.photo} name={pet.name} size={TAMANO_FOTO} />
+              </View>
               <AppText variant="caption" weight="semibold" numberOfLines={1}>
-                {pet.emoji ? `${pet.name} ${pet.emoji}` : pet.name}
+                {pet.name}
               </AppText>
               {pet.hasAlert && <View style={styles.alertDot} />}
             </Pressable>
           );
         })}
         {onAdd && <AddPetTile onPress={onAdd} />}
-      </View>
-    </Card>
+      </ScrollView>
+    </GlassSurface>
   );
 }
 
+const TAMANO_FOTO = 58;
+
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
+  card: { overflow: 'hidden', borderRadius: 28 },
+  row: { flexDirection: 'row', gap: 10, padding: spacing.md },
   tile: {
-    flexGrow: 1,
-    flexBasis: '30%',
+    width: 106,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.xs + 2,
+    gap: spacing.sm,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.xs,
-    minHeight: 84,
-    borderRadius: radius.md,
-    backgroundColor: colors.background,
+    minHeight: 124,
+    borderRadius: 22,
+    backgroundColor: 'rgba(255,255,255,0.5)',
     borderWidth: 1,
     borderColor: 'transparent',
   },
-  addTile: { backgroundColor: colors.surface, borderColor: colors.border, borderStyle: 'dashed' },
+  addTile: { backgroundColor: 'rgba(232,244,237,0.5)', borderColor: 'rgba(35,117,95,0.2)', borderStyle: 'dashed' },
+  addIcon: { width: TAMANO_FOTO + 8, height: TAMANO_FOTO + 8, borderRadius: radius.pill,
+    alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.6)' },
+  avatarRing: { padding: 4, borderRadius: radius.pill, borderWidth: 1, borderColor: 'rgba(255,255,255,0.95)',
+    backgroundColor: 'rgba(255,255,255,0.5)' },
+  avatarSelected: { borderColor: colors.primary },
   alertTile: { backgroundColor: colors.errorSoft },
-  selectedTile: { borderColor: colors.primary },
+  selectedTile: { borderColor: 'rgba(35,117,95,0.35)', backgroundColor: colors.primarySoft },
   alertDot: {
     position: 'absolute',
     top: spacing.sm,

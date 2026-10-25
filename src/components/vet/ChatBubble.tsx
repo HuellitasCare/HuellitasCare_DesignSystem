@@ -5,9 +5,7 @@ import { AppText } from '../ui';
 
 export type ChatBubbleProps = {
   message: string;
-  /** Ej. "10:05". */
   time?: string;
-  /** `sent`: mensaje del usuario (derecha, verde). `received`: del veterinario (izquierda, blanco). */
   direction: 'sent' | 'received';
 };
 

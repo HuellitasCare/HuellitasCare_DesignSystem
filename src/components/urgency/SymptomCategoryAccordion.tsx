@@ -4,18 +4,15 @@ import { colors, spacing } from '../../theme';
 import { AppText, Card, ChipGroup, Icon, renderIconSlot, type ChipOption, type IconSlot } from '../ui';
 
 export type SymptomCategoryAccordionProps<T extends string = string> = {
-  /** Ej. "Digestivo", "Respiratorio". */
   title: string;
   icon?: IconSlot;
   expanded: boolean;
   onToggle?: () => void;
   options: ChipOption<T>[];
-  /** Síntomas seleccionados (de esta categoría o de todas; solo se marcan los que coinciden). */
   value: T[];
   onChange?: (next: T[]) => void;
 };
 
-/** Categoría de síntomas desplegable con chips de selección múltiple. */
 export function SymptomCategoryAccordion<T extends string = string>({
   title,
   icon,

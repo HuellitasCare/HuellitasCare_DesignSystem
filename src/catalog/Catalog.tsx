@@ -3,10 +3,12 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AppHeader, ChipGroup } from '../components';
-import { colors, spacing } from '../theme';
+import { screenBackground } from '../design/screen';
+import { spacing } from '../theme';
 import { ContentSection } from './sections/ContentSection';
 import { FeedbackSection } from './sections/FeedbackSection';
 import { FoundationsSection } from './sections/FoundationsSection';
+import { GlassSection } from './sections/GlassSection';
 import { ListsSection } from './sections/ListsSection';
 import { NavigationSection } from './sections/NavigationSection';
 import { PetsSection } from './sections/PetsSection';
@@ -16,6 +18,7 @@ import { UrgencySection } from './sections/UrgencySection';
 import { VetSection } from './sections/VetSection';
 
 export const SECTIONS: { key: string; label: string; Component: ComponentType }[] = [
+  { key: 'glass', label: 'Glass', Component: GlassSection },
   { key: 'fundamentos', label: 'Fundamentos', Component: FoundationsSection },
   { key: 'ui', label: 'Base', Component: UiSection },
   { key: 'feedback', label: 'Feedback', Component: FeedbackSection },
@@ -30,7 +33,6 @@ export const SECTIONS: { key: string; label: string; Component: ComponentType }[
 
 const ALL = 'todos';
 
-/** Vitrina de todos los componentes de HuellitasCare agrupados como en el plan. */
 export function Catalog() {
   const insets = useSafeAreaInsets();
   const scrollRef = useRef<ScrollView>(null);
@@ -40,7 +42,7 @@ export function Catalog() {
 
   return (
     <View style={styles.screen}>
-      <AppHeader title="Catálogo de componentes" />
+      <AppHeader title="Huellitas Care" />
       <ScrollView
         ref={scrollRef}
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + spacing.xxxl }]}
@@ -64,6 +66,7 @@ export function Catalog() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.background },
-  content: { padding: spacing.lg, gap: spacing.xxxl + spacing.sm },
+  screen: { flex: 1, ...screenBackground },
+  content: { width: '100%', maxWidth: 680, alignSelf: 'center', padding: spacing.lg,
+    gap: spacing.xxxl + spacing.sm },
 });

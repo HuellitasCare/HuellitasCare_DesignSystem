@@ -7,12 +7,10 @@ export type ChatInputProps = {
   value: string;
   onChangeText: (text: string) => void;
   onSend: () => void;
-  /** Si se pasa, muestra el botón de adjuntar. */
   onAttach?: () => void;
   placeholder?: string;
 };
 
-/** Barra inferior del chat: campo de texto + adjuntar + enviar. */
 export function ChatInput({
   value,
   onChangeText,

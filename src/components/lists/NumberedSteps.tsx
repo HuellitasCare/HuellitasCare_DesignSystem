@@ -12,7 +12,6 @@ export type NumberedStepsProps = {
   steps: NumberedStep[];
 };
 
-/** Instrucciones numeradas de un artículo, ej. "Cómo medir la temperatura". */
 export function NumberedSteps({ steps }: NumberedStepsProps) {
   return (
     <Card padding={0}>

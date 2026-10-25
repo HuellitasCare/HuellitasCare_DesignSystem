@@ -5,7 +5,6 @@ import { colors, fontFamily, typography, type FontWeight, type TypographyVariant
 export type AppTextProps = TextProps & {
   variant?: TypographyVariant;
   color?: string;
-  /** Sobrescribe el peso de la variante (ej. `body` en semibold). */
   weight?: FontWeight;
   align?: TextStyle['textAlign'];
 };

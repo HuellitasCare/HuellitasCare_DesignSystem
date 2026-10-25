@@ -12,17 +12,13 @@ const severityBadge: Record<SymptomSeverity, { label: string; tone: BadgeTone }>
 };
 
 export type SymptomRecordRowProps = {
-  /** Ej. "8 mayo 2026". */
   date: string;
-  /** Ej. "Vómito + Letargo". */
   title: string;
-  /** Ej. "Luna 🐕". */
   petName: string;
   severity: SymptomSeverity;
   onPress?: () => void;
 };
 
-/** Registro del historial de síntomas. Úsalo dentro de `ListGroup`. */
 export function SymptomRecordRow({ date, title, petName, severity, onPress }: SymptomRecordRowProps) {
   const badge = severityBadge[severity];
 

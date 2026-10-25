@@ -5,7 +5,6 @@ import { AppText } from '../ui';
 
 export type SeverityLevelItem = {
   level: UrgencyLevel;
-  /** Ej. "Leve", "Moderada", "Severa". */
   title: string;
   description: string;
 };
@@ -14,7 +13,6 @@ export type SeverityLevelGridProps = {
   items: SeverityLevelItem[];
 };
 
-/** Columnas de niveles de gravedad de un artículo (ej. prueba del pellizco de piel). */
 export function SeverityLevelGrid({ items }: SeverityLevelGridProps) {
   return (
     <View style={styles.row}>

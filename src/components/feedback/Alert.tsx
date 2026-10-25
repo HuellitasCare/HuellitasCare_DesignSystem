@@ -9,7 +9,6 @@ export type AlertProps = {
   tone: AlertTone;
   title: string;
   message?: string;
-  /** Sobrescribe el ícono por defecto del tono. */
   icon?: IconName;
 };
 
@@ -19,7 +18,6 @@ const tones: Record<AlertTone, { color: string; soft: string; icon: IconName }> 
   error: { color: colors.error, soft: colors.errorSoft, icon: 'close' },
 };
 
-/** Banner con borde izquierdo: "Cambios guardados correctamente", "Algo salió mal". */
 export function Alert({ tone, title, message, icon }: AlertProps) {
   const { color, soft, icon: defaultIcon } = tones[tone];
 

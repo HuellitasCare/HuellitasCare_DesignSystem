@@ -4,7 +4,6 @@ import { colors } from '../../theme';
 import { AppText } from '../ui';
 
 export type GreetingHeaderProps = {
-  /** Ej. "Buenas noches,". */
   greeting: string;
   name: string;
 };

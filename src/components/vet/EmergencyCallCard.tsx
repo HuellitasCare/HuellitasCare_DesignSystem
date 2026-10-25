@@ -4,11 +4,8 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText, Button, Icon, type ButtonVariant } from '../ui';
 
 export type EmergencyCallCardVariant =
-  /** Rojo con botón blanco (Design System). */
   | 'danger'
-  /** Negro con botón verde (Contacto con veterinario). */
   | 'dark'
-  /** Negro con borde y botón rojos (evaluador, urgencia alta). */
   | 'darkDanger';
 
 export type EmergencyCallCardProps = {
@@ -28,7 +25,6 @@ const variants: Record<EmergencyCallCardVariant, { container: ViewStyle; button:
   },
 };
 
-/** Tarjeta de llamada de emergencia ("Línea de emergencias veterinarias · Disponible 24/7"). */
 export function EmergencyCallCard({
   title,
   subtitle,

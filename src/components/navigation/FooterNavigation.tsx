@@ -9,11 +9,9 @@ export type FooterNavigationProps = {
   previousLabel?: string;
   nextLabel?: string;
   nextDisabled?: boolean;
-  /** Oculta "Anterior" en el primer paso. */
   hidePrevious?: boolean;
 };
 
-/** Navegación inferior entre pasos: "‹ Anterior" / "Siguiente ›". */
 export function FooterNavigation({
   onPrevious,
   onNext,

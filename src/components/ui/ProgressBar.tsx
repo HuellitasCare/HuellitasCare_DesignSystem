@@ -4,9 +4,7 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText } from './AppText';
 
 export type ProgressBarProps = {
-  /** Valor entre 0 y 1. */
   progress: number;
-  /** Texto a la derecha, ej. "3 / 5 preguntas". */
   label?: string;
   color?: string;
   height?: number;

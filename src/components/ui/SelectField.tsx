@@ -7,10 +7,8 @@ import type { TextFieldVariant } from './TextField';
 
 export type SelectFieldProps = {
   label?: string;
-  /** Texto de la opción seleccionada. */
   value?: string;
   placeholder?: string;
-  /** Abre el selector (modal, bottom sheet, picker nativo); lo maneja la pantalla. */
   onPress?: () => void;
   error?: string;
   disabled?: boolean;
@@ -64,18 +62,18 @@ export function SelectField({
 }
 
 const styles = StyleSheet.create({
-  container: { gap: spacing.xs + 2 },
+  container: { gap: spacing.sm },
   field: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.sm,
-    minHeight: 48,
-    paddingHorizontal: spacing.lg,
+    minHeight: 54,
+    paddingHorizontal: spacing.xl,
     borderRadius: radius.md,
     borderWidth: 1,
   },
-  filled: { backgroundColor: colors.background, borderColor: colors.border },
-  outlined: { backgroundColor: colors.surface, borderColor: colors.border },
+  filled: { backgroundColor: '#F1F6F3', borderColor: '#E1EBE4' },
+  outlined: { backgroundColor: colors.glass, borderColor: colors.glassBorder },
   error: { borderColor: colors.error, backgroundColor: colors.errorSoft },
   pressed: { borderColor: colors.primary },
   disabled: { opacity: 0.6 },

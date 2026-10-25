@@ -4,16 +4,13 @@ import { colors, spacing } from '../../theme';
 import { AppText, Badge, Button, Card } from '../ui';
 
 export type ReminderCardProps = {
-  /** Ej. "Revisar a Luna a las 10:30 PM". */
   title: string;
   subtitle?: string;
-  /** Si está activo se muestra el badge "Activado" en lugar del botón. */
   active?: boolean;
   actionLabel?: string;
   onActivate?: () => void;
 };
 
-/** Recordatorio programado con botón "Activar". */
 export function ReminderCard({
   title,
   subtitle = 'Recordatorio programado',

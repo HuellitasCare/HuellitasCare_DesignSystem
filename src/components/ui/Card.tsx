@@ -1,22 +1,19 @@
-import { StyleSheet, View, type ViewProps } from 'react-native';
+import { StyleSheet, type ViewProps } from 'react-native';
 
-import { colors, radius, spacing } from '../../theme';
+import { radius, spacing } from '../../theme';
+import { GlassSurface } from './GlassSurface';
 
 export type CardProps = ViewProps & {
-  /** Padding interno. Usa `0` para listas que dibujan sus propias filas. */
   padding?: number;
 };
 
 export function Card({ padding = spacing.lg, style, ...rest }: CardProps) {
-  return <View style={[styles.card, { padding }, style]} {...rest} />;
+  return <GlassSurface style={[styles.card, { padding }, style]} {...rest} />;
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.surface,
     borderRadius: radius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
     overflow: 'hidden',
   },
 });

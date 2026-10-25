@@ -6,7 +6,6 @@ import { AppText, Card } from '../ui';
 
 export type KeyValueItem = {
   label: string;
-  /** Texto o nodo (ej. chips de síntomas, badge "Moderada"). */
   value: ReactNode;
 };
 
@@ -14,7 +13,6 @@ export type KeyValueListProps = {
   items: KeyValueItem[];
 };
 
-/** Tabla de datos: Especie / Perro, Raza / Golden Retriever, resumen de registros. */
 export function KeyValueList({ items }: KeyValueListProps) {
   return (
     <Card padding={0}>

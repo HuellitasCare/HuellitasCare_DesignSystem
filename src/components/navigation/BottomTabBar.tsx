@@ -3,12 +3,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, fontFamily, spacing } from '../../theme';
 import { AppText, Icon, type IconName } from '../ui';
+import { GlassSurface } from '../ui/GlassSurface';
 
 export type TabItem<K extends string = string> = {
   key: K;
   label: string;
   icon: IconName;
-  /** Ícono cuando la pestaña está activa (por defecto el mismo). */
   activeIcon?: IconName;
 };
 
@@ -16,7 +16,6 @@ export type BottomTabBarProps<K extends string = string> = {
   items: TabItem<K>[];
   activeKey: K;
   onChange?: (key: K) => void;
-  /** Agrega el inset inferior del dispositivo. Requiere `SafeAreaProvider` en la raíz. */
   safeAreaBottom?: boolean;
 };
 
@@ -29,13 +28,11 @@ export function BottomTabBar<K extends string = string>({
   const insets = useSafeAreaInsets();
 
   return (
-    <View
-      style={[styles.container, { paddingBottom: (safeAreaBottom ? insets.bottom : 0) + spacing.sm }]}
-      accessibilityRole="tablist"
-    >
+    <View style={[styles.wrapper, { paddingBottom: (safeAreaBottom ? insets.bottom : 0) + spacing.md }]}>
+      <GlassSurface style={styles.container} accessibilityRole="tablist">
       {items.map((item) => {
         const active = item.key === activeKey;
-        const color = active ? colors.primary : colors.muted;
+        const color = active ? colors.white : colors.textSecondary;
         return (
           <Pressable
             key={item.key}
@@ -43,7 +40,7 @@ export function BottomTabBar<K extends string = string>({
             accessibilityRole="tab"
             accessibilityState={{ selected: active }}
             accessibilityLabel={item.label}
-            style={styles.tab}
+            style={({ pressed }) => [styles.tab, active && styles.tabActive, pressed && styles.pressed]}
           >
             <Icon name={active ? (item.activeIcon ?? item.icon) : item.icon} size={22} color={color} />
             <AppText
@@ -56,19 +53,30 @@ export function BottomTabBar<K extends string = string>({
           </Pressable>
         );
       })}
+      </GlassSurface>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    paddingHorizontal: spacing.lg,
+    paddingTop: spacing.sm,
+    backgroundColor: 'transparent',
+  },
   container: {
     flexDirection: 'row',
-    backgroundColor: colors.surface,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-    paddingTop: spacing.sm,
+    width: '100%',
+    maxWidth: 620,
+    alignSelf: 'center',
+    padding: 7,
+    gap: 4,
+    borderRadius: 32,
   },
-  tab: { flex: 1, alignItems: 'center', gap: spacing.xxs, minHeight: 44, justifyContent: 'center' },
-  label: { fontSize: 11, lineHeight: 14 },
+  tab: { flex: 1, alignItems: 'center', gap: 5, minHeight: 58, justifyContent: 'center', borderRadius: 25,
+    paddingVertical: spacing.sm, paddingHorizontal: 2 },
+  tabActive: { backgroundColor: colors.primary, borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
+  label: { fontSize: 10, lineHeight: 14 },
   labelActive: { fontFamily: fontFamily.semibold },
+  pressed: { opacity: 0.72, transform: [{ scale: 0.97 }] },
 });

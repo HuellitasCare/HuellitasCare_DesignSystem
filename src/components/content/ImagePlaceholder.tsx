@@ -7,11 +7,9 @@ export type ImagePlaceholderProps = {
   label?: string;
   icon?: IconName;
   height?: number;
-  /** Sin esquinas redondeadas (para la parte superior de una card). */
   flat?: boolean;
 };
 
-/** Espacio reservado para imagen o mapa ("Imagen destacada", "Clínicas cercanas"). */
 export function ImagePlaceholder({ label, icon = 'image-outline', height = 120, flat = false }: ImagePlaceholderProps) {
   return (
     <View

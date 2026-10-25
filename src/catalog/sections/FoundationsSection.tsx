@@ -6,35 +6,39 @@ import { CatalogSection, Demo } from '../CatalogSection';
 
 const swatches: { name: keyof typeof colors; label: string; dark?: boolean }[] = [
   { name: 'primary', label: 'Primary' },
-  { name: 'primaryLight', label: 'Primary Light' },
+  { name: 'primaryLight', label: 'Primary Light', dark: true },
+  { name: 'primarySoft', label: 'Primary Soft', dark: true },
   { name: 'secondary', label: 'Secondary' },
   { name: 'secondaryLight', label: 'Secondary Light', dark: true },
+  { name: 'secondarySoft', label: 'Secondary Soft', dark: true },
   { name: 'error', label: 'Error' },
   { name: 'warning', label: 'Warning' },
   { name: 'success', label: 'Success' },
   { name: 'background', label: 'Background', dark: true },
   { name: 'surface', label: 'Surface', dark: true },
+  { name: 'glass', label: 'Glass', dark: true },
+  { name: 'glassSoft', label: 'Glass Soft', dark: true },
   { name: 'text', label: 'Text' },
   { name: 'textSecondary', label: 'Text Sec' },
   { name: 'muted', label: 'Muted' },
 ];
 
 const typeSamples: { variant: TypographyVariant; label: string }[] = [
-  { variant: 'h1', label: 'H1 Bold — 28px' },
-  { variant: 'h2', label: 'H2 SemiBold — 22px' },
+  { variant: 'h1', label: 'H1 Bold — 30px' },
+  { variant: 'h2', label: 'H2 SemiBold — 23px' },
   { variant: 'h3', label: 'H3 SemiBold — 18px' },
   { variant: 'body', label: 'Body Regular — 16px' },
   { variant: 'bodySmall', label: 'Body Small — 14px' },
   { variant: 'caption', label: 'Caption Regular — 13px' },
   { variant: 'label', label: 'Label SemiBold — 13px' },
-  { variant: 'button', label: 'Button Medium — 16px' },
+  { variant: 'button', label: 'Button SemiBold — 15px' },
   { variant: 'sectionLabel', label: 'Section label — 11px' },
 ];
 
 export function FoundationsSection() {
   return (
     <CatalogSection title="Fundamentos">
-      <Demo name="colors">
+      <Demo name="Paleta">
         <View style={styles.grid}>
           {swatches.map((swatch) => (
             <View
@@ -51,7 +55,7 @@ export function FoundationsSection() {
           ))}
         </View>
       </Demo>
-      <Demo name="typography">
+      <Demo name="Tipografía">
         {typeSamples.map((sample) => (
           <AppText
             key={sample.variant}
@@ -70,8 +74,7 @@ export function FoundationsSection() {
           </AppText>
         ))}
         <AppText variant="caption" color={colors.muted}>
-          Fuente: Inter · tamaños del frame “Tipografía” del Design System · radios: {radius.md}px botones,{' '}
-          {radius.lg}px cards
+          Inter · radios {radius.md}/{radius.lg} px
         </AppText>
       </Demo>
     </CatalogSection>

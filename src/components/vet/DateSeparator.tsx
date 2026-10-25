@@ -4,7 +4,6 @@ import { colors, spacing } from '../../theme';
 import { AppText } from '../ui';
 
 export type DateSeparatorProps = {
-  /** Ej. "Hoy, 18 mayo 2026". */
   label: string;
 };
 

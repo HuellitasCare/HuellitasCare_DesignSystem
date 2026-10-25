@@ -4,11 +4,8 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText, Icon, type IconName } from '../ui';
 
 export type TipListVariant =
-  /** "Evita hacer esto": fondo rosado, ✕ rojas. */
   | 'avoid'
-  /** "Esto puede mejorar su estado": fondo verde, ✓ verdes. */
   | 'help'
-  /** "Ve al veterinario DE INMEDIATO si…": borde izquierdo rojo, viñetas. */
   | 'warning';
 
 export type TipListProps = {

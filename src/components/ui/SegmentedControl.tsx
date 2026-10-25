@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { colors, fontFamily, radius, spacing } from '../../theme';
+import { colors, fontFamily, radius, shadows, spacing } from '../../theme';
 import { AppText } from './AppText';
 
 export type SegmentOption<T extends string = string> = { label: string; value: T };
@@ -9,10 +9,6 @@ export type SegmentedControlProps<T extends string = string> = {
   options: SegmentOption<T>[];
   value: T;
   onChange?: (value: T) => void;
-  /**
-   * - `tabs`: segmentos unidos con fondo verde tenue en el activo (Resumen | Historial | Medicamentos).
-   * - `pills`: botones separados con fondo verde sólido en el activo (Luna | Rocky, Macho | Hembra).
-   */
   variant?: 'tabs' | 'pills';
   accessibilityLabel?: string;
 };
@@ -32,12 +28,12 @@ export function SegmentedControl<T extends string = string>({
       accessibilityRole={isTabs ? 'tablist' : 'radiogroup'}
       accessibilityLabel={accessibilityLabel}
     >
-      {options.map((option, index) => {
+      {options.map((option) => {
         const selected = option.value === value;
         const textColor = isTabs
           ? selected
             ? colors.primary
-            : colors.muted
+            : colors.textSecondary
           : selected
             ? colors.white
             : colors.text;
@@ -51,13 +47,11 @@ export function SegmentedControl<T extends string = string>({
             style={({ pressed }) => [
               styles.segment,
               !isTabs && styles.pill,
-              isTabs && index > 0 && styles.tabDivider,
               selected && (isTabs ? styles.tabSelected : styles.pillSelected),
               pressed && styles.pressed,
             ]}
           >
             <AppText
-              // Los tabs usan texto más chico y hasta 2 líneas para que quepan 3 opciones largas en 390px.
               variant={isTabs ? 'caption' : 'bodySmall'}
               color={textColor}
               numberOfLines={isTabs ? 2 : 1}
@@ -76,29 +70,30 @@ export function SegmentedControl<T extends string = string>({
 const styles = StyleSheet.create({
   tabsContainer: {
     flexDirection: 'row',
-    backgroundColor: colors.surface,
-    borderRadius: radius.md,
+    backgroundColor: '#E7F0E9',
+    borderRadius: radius.pill,
     borderWidth: 1,
-    borderColor: colors.border,
-    overflow: 'hidden',
+    borderColor: colors.glassBorder,
+    padding: 5,
+    gap: 3,
   },
   pillsContainer: { flexDirection: 'row', gap: spacing.sm },
   segment: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 40,
+    minHeight: 44,
     paddingHorizontal: spacing.sm,
+    borderRadius: radius.pill,
   },
-  tabDivider: { borderLeftWidth: 1, borderLeftColor: colors.border },
-  tabSelected: { backgroundColor: colors.primarySoft },
+  tabSelected: { backgroundColor: colors.surface, ...shadows.soft },
   pill: {
-    borderRadius: radius.md,
+    borderRadius: radius.pill,
     borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
+    borderColor: colors.glassBorder,
+    backgroundColor: colors.glass,
   },
-  pillSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
+  pillSelected: { backgroundColor: colors.primary, borderColor: colors.primary, ...shadows.button },
   text: { fontFamily: fontFamily.medium },
   textSelected: { fontFamily: fontFamily.semibold },
   pressed: { opacity: 0.8 },

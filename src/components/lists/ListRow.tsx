@@ -7,17 +7,12 @@ import { AppText, Badge, Icon, renderIconSlot, type BadgeProps, type IconSlot } 
 export type ListRowProps = {
   title: string;
   subtitle?: string;
-  /** Emoji o elemento dentro de la caja cuadrada izquierda. */
   icon?: IconSlot;
   iconBackground?: string;
-  /** Reemplaza la caja de ícono (ej. una miniatura de artículo). */
   leading?: ReactNode;
-  /** Badge a la derecha ("Nuevo", "Activo", "1") o cualquier nodo. */
   badge?: BadgeProps | ReactNode;
   onPress?: () => void;
-  /** Por defecto se muestra cuando la fila es presionable. */
   showChevron?: boolean;
-  /** `danger`: fila resaltada en rojo (ej. "Contacto veterinario" en urgencia alta). */
   tone?: 'default' | 'danger';
 };
 

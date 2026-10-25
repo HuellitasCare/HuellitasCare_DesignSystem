@@ -4,11 +4,8 @@ export type UrgencyLevel = 'alta' | 'moderada' | 'baja';
 
 type UrgencyStyle = {
   label: string;
-  /** Color de texto y borde. */
   color: string;
-  /** Fondo tenue. */
   soft: string;
-  /** Color del indicador circular (en "moderada" es ámbar, distinto al texto naranja). */
   dot: string;
 };
 

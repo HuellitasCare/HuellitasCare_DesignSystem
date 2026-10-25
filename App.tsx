@@ -20,7 +20,6 @@ export default function App() {
     Inter_700Bold,
   });
 
-  // Si la fuente falla se sigue con la del sistema en lugar de bloquear la app.
   if (!fontsLoaded && !fontError) {
     return (
       <View style={styles.loading}>
@@ -31,7 +30,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <Catalog />
     </SafeAreaProvider>
   );

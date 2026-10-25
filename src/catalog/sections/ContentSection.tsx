@@ -13,6 +13,7 @@ import {
   ReminderCard,
   SearchBar,
 } from '../../components';
+import { colors } from '../../theme';
 import { CatalogSection, Demo } from '../CatalogSection';
 
 export function ContentSection() {
@@ -23,39 +24,39 @@ export function ContentSection() {
 
   return (
     <CatalogSection title="Contenido y guías">
-      <Demo name="SearchBar">
+      <Demo name="Búsqueda">
         <SearchBar value={query} onChangeText={setQuery} placeholder="Buscar registros..." onFilterPress={() => {}} />
       </Demo>
 
-      <Demo name="ActionCard">
-        <ActionCard icon="⚠️" title="Título de acción principal" subtitle="Subtítulo descriptivo de la acción" onPress={() => {}} />
+      <Demo name="Acciones">
+        <ActionCard icon="warning" title="Evaluador" subtitle="Revisar síntomas" onPress={() => {}} />
         <ActionCard
           variant="primary"
-          icon="📅"
-          title="Calendario de salud"
-          subtitle="Ver vacunas y citas pendientes"
+          icon="calendar"
+          title="Calendario"
+          subtitle="Vacunas y citas"
           onPress={() => {}}
         />
       </Demo>
 
-      <Demo name="FeaturedArticleCard">
+      <Demo name="Destacado">
         <FeaturedArticleCard
           badgeLabel="Esencial"
-          title="Manual de primeros auxilios para mascotas"
+          title="Primeros auxilios"
           meta="12 min lectura"
           onPress={() => {}}
         />
       </Demo>
 
-      <Demo name="ArticleRow">
+      <Demo name="Artículos">
         <ListGroup>
-          <ArticleRow title="Señales de deshidratación" meta="Salud · 5 min" onPress={() => {}} />
-          <ArticleRow title="Cómo medir temperatura" meta="Primeros auxilios · 3 min" icon="🌡️" iconBackground="#FDECEA" onPress={() => {}} />
-          <ArticleRow title="Plantas tóxicas para mascotas" meta="Prevención · 7 min" onPress={() => {}} />
+          <ArticleRow title="Deshidratación" meta="Salud · 5 min" onPress={() => {}} />
+          <ArticleRow title="Temperatura" meta="Guía · 3 min" icon="thermometer-outline" iconBackground={colors.errorSoft} onPress={() => {}} />
+          <ArticleRow title="Plantas tóxicas" meta="Prevención · 7 min" onPress={() => {}} />
         </ListGroup>
       </Demo>
 
-      <Demo name="AudioGuidePlayer">
+      <Demo name="Audio">
         <AudioGuidePlayer
           progress={progress}
           isPlaying={playing}
@@ -67,29 +68,29 @@ export function ContentSection() {
         />
       </Demo>
 
-      <Demo name="RangeHighlight">
+      <Demo name="Rango">
         <RangeHighlight value="38°C – 39°C" caption="Temperatura normal · Perros adultos" />
       </Demo>
 
-      <Demo name="ReminderCard">
+      <Demo name="Recordatorio">
         <ReminderCard
-          title="Revisar a Luna a las 10:30 PM"
+          title="Revisar a Luna"
           active={reminderActive}
           onActivate={() => setReminderActive(true)}
         />
       </Demo>
 
-      <Demo name="NotificationPreview">
+      <Demo name="Aviso">
         <Card>
           <NotificationPreview
-            title="Revisión pendiente — Luna"
-            body="¡Tu mascota necesita seguimiento! Es importante monitorear la evolución de Luna"
+            title="Revisión de Luna"
+            body="Seguimiento pendiente"
             time="10:20 PM"
           />
         </Card>
       </Demo>
 
-      <Demo name="ImagePlaceholder">
+      <Demo name="Imágenes">
         <ImagePlaceholder label="Imagen / Mapa" />
         <ImagePlaceholder label="Clínicas cercanas" icon="map-outline" height={100} />
       </Demo>

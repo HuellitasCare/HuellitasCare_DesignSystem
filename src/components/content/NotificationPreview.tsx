@@ -1,17 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 
 import { colors, radius, spacing } from '../../theme';
-import { AppText } from '../ui';
+import { AppText, Icon } from '../ui';
 
 export type NotificationPreviewProps = {
   title: string;
   body: string;
-  /** Ej. "10:20 PM". */
   time?: string;
   appName?: string;
 };
 
-/** Vista previa de una notificación push (confirmación de recordatorio). */
 export function NotificationPreview({ title, body, time, appName = 'Huellitas Care' }: NotificationPreviewProps) {
   return (
     <View
@@ -20,8 +18,9 @@ export function NotificationPreview({ title, body, time, appName = 'Huellitas Ca
       accessibilityLabel={`Notificación de ${appName}: ${title}. ${body}`}
     >
       <View style={styles.header}>
+        <Icon name="paw" size={14} color={colors.primary} />
         <AppText variant="caption" weight="bold" style={styles.flex}>
-          🐾 {appName}
+          {appName}
         </AppText>
         {time && (
           <AppText variant="caption" color={colors.muted}>

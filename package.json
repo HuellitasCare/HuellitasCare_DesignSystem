@@ -1,5 +1,5 @@
 {
-  "name": "huellitascareapp",
+  "name": "huellitascare-design-system-glass",
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
@@ -7,6 +7,8 @@
     "@react-native-vector-icons/ionicons": "^13.1.4",
     "expo": "~57.0.26",
     "expo-font": "~57.0.4",
+    "expo-glass-effect": "~57.0.4",
+    "expo-image": "~57.0.5",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",

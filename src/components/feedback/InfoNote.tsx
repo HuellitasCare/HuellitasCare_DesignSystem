@@ -5,14 +5,11 @@ import { colors, radius, spacing } from '../../theme';
 import { AppText, renderIconSlot, type IconSlot } from '../ui';
 
 export type InfoNoteProps = {
-  /** Texto o nodo con partes resaltadas (ej. un link "guía de monitoreo"). */
   children: ReactNode;
   icon?: IconSlot;
-  /** `neutral`: card blanca. `success`: fondo verde tenue (ej. "guardados en el historial"). */
   tone?: 'neutral' | 'success';
 };
 
-/** Nota informativa pequeña dentro de formularios o resúmenes. */
 export function InfoNote({ children, icon, tone = 'neutral' }: InfoNoteProps) {
   const isSuccess = tone === 'success';
 

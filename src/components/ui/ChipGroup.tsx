@@ -6,10 +6,8 @@ export type ChipOption<T extends string = string> = { label: string; value: T };
 
 export type ChipGroupProps<T extends string = string> = {
   options: ChipOption<T>[];
-  /** Valores seleccionados. En modo single contiene como máximo uno. */
   value: T[];
   onChange?: (next: T[]) => void;
-  /** Permite seleccionar varios (síntomas). Si es `false` se comporta como filtro único. */
   multiple?: boolean;
   variant?: ChipVariant;
 };

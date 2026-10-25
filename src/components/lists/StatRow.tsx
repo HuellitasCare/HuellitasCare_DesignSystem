@@ -6,7 +6,6 @@ import { AppText } from '../ui';
 export type StatItem = {
   value: string | number;
   label: string;
-  /** Color del número (ej. rojo para alertas, naranja para próxima cita). */
   color?: string;
 };
 
