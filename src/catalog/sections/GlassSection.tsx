@@ -50,6 +50,14 @@ export function GlassSection() {
         <CareHero actionTone="red" onPress={() => {}} />
       </Demo>
 
+      <Demo name="Inicio corazón">
+        <CareHero actionTone="red" visual="heart" onPress={() => {}} />
+      </Demo>
+
+      <Demo name="Inicio pulso">
+        <CareHero actionTone="red" visual="pulse" onPress={() => {}} />
+      </Demo>
+
       <Demo name="Acceso">
         <WelcomeHero expanded={false} compact={width < 360} />
       </Demo>
