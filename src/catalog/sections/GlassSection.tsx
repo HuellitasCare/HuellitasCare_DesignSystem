@@ -42,6 +42,14 @@ export function GlassSection() {
         <CareHero onPress={() => {}} />
       </Demo>
 
+      <Demo name="Inicio sin mascotas">
+        <CareHero showPets={false} onPress={() => {}} />
+      </Demo>
+
+      <Demo name="Inicio botón rojo">
+        <CareHero actionTone="red" onPress={() => {}} />
+      </Demo>
+
       <Demo name="Acceso">
         <WelcomeHero expanded={false} compact={width < 360} />
       </Demo>
