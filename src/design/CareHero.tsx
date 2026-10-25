@@ -9,7 +9,7 @@ export type CareHeroProps = {
   onPress: () => void;
   showPets?: boolean;
   actionTone?: 'light' | 'red';
-  visual?: 'pets' | 'none' | 'heart' | 'pulse';
+  visual?: 'pets' | 'none' | 'heart' | 'pulse' | 'shield' | 'record';
 };
 
 export function CareHero({ onPress, showPets = true, actionTone = 'light', visual }: CareHeroProps) {
@@ -48,6 +48,30 @@ export function CareHero({ onPress, showPets = true, actionTone = 'light', visua
       </View>
       <View style={styles.pulseHeart}><Icon name="heart" size={21} color={colors.error} /></View>
     </View>}
+    {selectedVisual === 'shield' && <View pointerEvents="none" accessible={false}
+      style={[styles.rightVisual, compact && styles.rightVisualCompact]}>
+      <View style={styles.shieldBack} />
+      <View style={styles.shieldTile}>
+        <Icon name="shield-checkmark-outline" size={76} color="#F0F9EF" />
+      </View>
+      <View style={styles.shieldHeart}><Icon name="heart" size={19} color={colors.error} /></View>
+      <View style={styles.shieldSparkle}><Icon name="add" size={18} color="#E6F4E7" /></View>
+    </View>}
+    {selectedVisual === 'record' && <View pointerEvents="none" accessible={false}
+      style={[styles.rightVisual, compact && styles.rightVisualCompact]}>
+      <View style={styles.recordBack} />
+      <View style={styles.recordCard}>
+        <View style={styles.recordHeader}>
+          <View style={styles.recordHeaderLine} />
+          <View style={styles.recordHeaderDot} />
+        </View>
+        {[0, 1, 2].map((row) => <View key={row} style={styles.recordRow}>
+          <View style={styles.recordCheck}><Icon name="checkmark" size={13} color="#ECF9EC" /></View>
+          <View style={[styles.recordLine, row === 2 && styles.recordLineShort]} />
+        </View>)}
+      </View>
+      <View style={styles.recordBadge}><Icon name="search" size={21} color={colors.error} /></View>
+    </View>}
     <View style={[styles.copy, (compact || selectedVisual === 'none') && styles.copyCompact]}>
       <AppText variant="sectionLabel" color="#B9DACB" style={styles.eyebrow}>SU BIENESTAR IMPORTA</AppText>
       <AppText variant="h2" color="#F8FCF8" style={styles.title}>Un cuidado que{ '\n' }empieza contigo.</AppText>
@@ -80,9 +104,9 @@ const styles = StyleSheet.create({
   actionLabel: { flexShrink: 1 },
   illustration: { position: 'absolute', width: 184, height: 184, right: -30, bottom: -5, opacity: 0.95 },
   illustrationCompact: { width: 130, height: 130, right: -36, bottom: -34, opacity: 0.28 },
-  rightVisual: { position: 'absolute', right: -12, bottom: -10, width: 176, height: 176,
+  rightVisual: { position: 'absolute', right: 8, bottom: 8, width: 176, height: 176,
     alignItems: 'center', justifyContent: 'center' },
-  rightVisualCompact: { right: -34, bottom: -34, opacity: 0.28, transform: [{ scale: 0.75 }] },
+  rightVisualCompact: { right: -14, bottom: -20, opacity: 0.28, transform: [{ scale: 0.75 }] },
   heartOrbit: { position: 'absolute', width: 166, height: 166, borderRadius: 83,
     borderWidth: 1, borderColor: 'rgba(231, 248, 231, 0.24)' },
   heartHalo: { width: 136, height: 136, borderRadius: 68, alignItems: 'center', justifyContent: 'center',
@@ -105,6 +129,34 @@ const styles = StyleSheet.create({
   pulseFooterLine: { width: 54, height: 4, borderRadius: 2, backgroundColor: 'rgba(239, 254, 238, 0.55)' },
   pulseFooterDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: '#C4E8D0' },
   pulseHeart: { position: 'absolute', top: 10, right: 4, width: 40, height: 40, borderRadius: 20,
+    alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F8EC',
+    borderWidth: 1, borderColor: '#FFFFFF' },
+  shieldBack: { position: 'absolute', width: 140, height: 140, borderRadius: 42,
+    backgroundColor: 'rgba(212, 241, 222, 0.15)', borderWidth: 1,
+    borderColor: 'rgba(240, 255, 243, 0.30)', transform: [{ rotate: '16deg' }] },
+  shieldTile: { width: 120, height: 120, borderRadius: 38, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: 'rgba(228, 248, 229, 0.24)', borderWidth: 1,
+    borderColor: 'rgba(247, 255, 246, 0.62)', transform: [{ rotate: '-7deg' }] },
+  shieldHeart: { position: 'absolute', right: 3, top: 9, width: 38, height: 38, borderRadius: 19,
+    alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F8EC',
+    borderWidth: 1, borderColor: '#FFFFFF' },
+  shieldSparkle: { position: 'absolute', left: 4, bottom: 8 },
+  recordBack: { position: 'absolute', width: 142, height: 138, borderRadius: 26,
+    backgroundColor: 'rgba(217, 241, 222, 0.14)', borderWidth: 1,
+    borderColor: 'rgba(237, 252, 234, 0.36)', transform: [{ rotate: '-12deg' }] },
+  recordCard: { width: 142, height: 138, borderRadius: 26, padding: 17, gap: 12,
+    backgroundColor: 'rgba(226, 247, 230, 0.24)', borderWidth: 1,
+    borderColor: 'rgba(248, 255, 246, 0.62)', transform: [{ rotate: '5deg' }] },
+  recordHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  recordHeaderLine: { width: 43, height: 5, borderRadius: 3, backgroundColor: 'rgba(239, 254, 238, 0.58)' },
+  recordHeaderDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: '#D9CAA8' },
+  recordRow: { flexDirection: 'row', alignItems: 'center', gap: 9 },
+  recordCheck: { width: 20, height: 20, borderRadius: 7, alignItems: 'center', justifyContent: 'center',
+    backgroundColor: 'rgba(232, 250, 231, 0.18)', borderWidth: 1,
+    borderColor: 'rgba(247, 255, 246, 0.55)' },
+  recordLine: { width: 57, height: 5, borderRadius: 3, backgroundColor: 'rgba(239, 254, 238, 0.55)' },
+  recordLineShort: { width: 41 },
+  recordBadge: { position: 'absolute', right: 3, top: 9, width: 40, height: 40, borderRadius: 20,
     alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F8EC',
     borderWidth: 1, borderColor: '#FFFFFF' },
   pressed: { opacity: 0.92, transform: [{ scale: 0.99 }] },

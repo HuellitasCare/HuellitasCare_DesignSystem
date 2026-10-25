@@ -58,6 +58,14 @@ export function GlassSection() {
         <CareHero actionTone="red" visual="pulse" onPress={() => {}} />
       </Demo>
 
+      <Demo name="Inicio escudo">
+        <CareHero actionTone="red" visual="shield" onPress={() => {}} />
+      </Demo>
+
+      <Demo name="Inicio registro">
+        <CareHero actionTone="red" visual="record" onPress={() => {}} />
+      </Demo>
+
       <Demo name="Acceso">
         <WelcomeHero expanded={false} compact={width < 360} />
       </Demo>

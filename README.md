@@ -31,7 +31,7 @@ Los tokens completos están en `src/theme/`: colores, espaciado, radios, tipogra
 
 ## Componentes
 
-Las familias en `src/components/` son `ui`, `feedback`, `navigation`, `lists`, `pets`, `urgency`, `symptoms`, `vet` y `content`. `src/design/` agrega `CareHero`, `WelcomeHero` y el fondo ambiental. La sección **Identidad Glass** muestra la marca, los tres tonos de superficie, cinco variantes de `CareHero` y `WelcomeHero`. `CareHero` permite ocultar la ilustración con `showPets={false}`, usar el botón rojo con `actionTone="red"` o elegir `visual="heart"` y `visual="pulse"` como motivos decorativos a la derecha. Las demás secciones muestran estados y variantes de los componentes existentes con el nuevo tema.
+Las familias en `src/components/` son `ui`, `feedback`, `navigation`, `lists`, `pets`, `urgency`, `symptoms`, `vet` y `content`. `src/design/` agrega `CareHero`, `WelcomeHero` y el fondo ambiental. La sección **Identidad Glass** muestra la marca, los tres tonos de superficie, siete variantes de `CareHero` y `WelcomeHero`. `CareHero` permite ocultar la ilustración con `showPets={false}`, usar el botón rojo con `actionTone="red"` o elegir los motivos `heart`, `pulse`, `shield` y `record` a la derecha. Las demás secciones muestran estados y variantes de los componentes existentes con el nuevo tema.
 
 La iconografía sigue el patrón de `HuellitasCare_App`: nombres de Ionicons para los iconos comunes y trazos SVG de 24 × 24 para los propios. La marca y la ilustración se guardan como SVG. `IconSlot` acepta un nombre de icono o un elemento React; las etiquetas del catálogo son nombres breves en español.
 
