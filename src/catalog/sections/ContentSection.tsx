@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   ActionCard,
   ArticleRow,
+  AudioGuideDock,
   AudioGuidePlayer,
   Card,
   FeaturedArticleCard,
@@ -16,11 +17,20 @@ import {
 import { colors } from '../../theme';
 import { CatalogSection, Demo } from '../CatalogSection';
 
+const DEMO_CHAPTERS = [
+  { title: 'Introducción y señales clave', durationSeconds: 34 },
+  { title: 'Qué observar primero', durationSeconds: 42 },
+  { title: 'Medidas prácticas en casa', durationSeconds: 48 },
+];
+
 export function ContentSection() {
   const [query, setQuery] = useState('');
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0.35);
+  const [chapterIndex, setChapterIndex] = useState(1);
+  const [speed, setSpeed] = useState(1);
   const [reminderActive, setReminderActive] = useState(false);
+
+  const progress = (chapterIndex + 0.35) / DEMO_CHAPTERS.length;
 
   return (
     <CatalogSection title="Contenido y guías">
@@ -60,11 +70,26 @@ export function ContentSection() {
         <AudioGuidePlayer
           progress={progress}
           isPlaying={playing}
+          chapters={DEMO_CHAPTERS}
+          currentIndex={chapterIndex}
+          onSelectChapter={setChapterIndex}
+          speed={speed}
+          onCycleSpeed={() => setSpeed((s) => (s === 1 ? 1.25 : s === 1.25 ? 1.5 : 1))}
+          elapsedSeconds={48}
+          totalDurationSeconds={124}
           onPlayPause={() => setPlaying((p) => !p)}
-          onRewind={() => setProgress((p) => Math.max(0, p - 0.1))}
-          onForward={() => setProgress((p) => Math.min(1, p + 0.1))}
-          onPrevious={() => setProgress(0)}
-          onNext={() => setProgress(1)}
+          onPrevious={() => setChapterIndex((i) => Math.max(0, i - 1))}
+          onNext={() => setChapterIndex((i) => Math.min(DEMO_CHAPTERS.length - 1, i + 1))}
+        />
+        <AudioGuideDock
+          chapterTitle={DEMO_CHAPTERS[chapterIndex].title}
+          partLabel={`Parte ${chapterIndex + 1}/${DEMO_CHAPTERS.length} · 0:48`}
+          isPlaying={playing}
+          canPrevious={chapterIndex > 0}
+          canNext={chapterIndex < DEMO_CHAPTERS.length - 1}
+          onPlayPause={() => setPlaying((p) => !p)}
+          onPrevious={() => setChapterIndex((i) => Math.max(0, i - 1))}
+          onNext={() => setChapterIndex((i) => Math.min(DEMO_CHAPTERS.length - 1, i + 1))}
         />
       </Demo>
 
